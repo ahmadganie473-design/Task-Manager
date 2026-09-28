@@ -11,9 +11,17 @@ public class Task {
 	  this.description=description;
 	  this.completed=false;
 	  this.taskId = nextTaskId++;
-	  
-	  
-  }
+	   }
+  public Task(int taskId, String title, String description, boolean completed) {
+
+	    this.taskId = taskId;
+	    this.title = title;
+	    this.description = description;
+	    this.completed = completed;
+	    if(taskId >= nextTaskId) {
+	        nextTaskId = taskId + 1;
+	    }
+	}
   public int getTaskId() {
 	  return taskId;
   }
@@ -35,6 +43,10 @@ public class Task {
   public void setCompleted(boolean completed) {
 	  this.completed=completed;
 }
+  public String toFileString() {
+
+	    return taskId + "|" + title + "|" + description + "|" + completed;
+	}
   public  void displaytasks() {
 	  System.out.println("Id: "+ getTaskId());
 	  System.out.println("Title: "+ getTitle());
